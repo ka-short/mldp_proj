@@ -56,7 +56,7 @@ if st.button("Predict"):
 # Background image and style
 st.markdown(f''' <style> 
     .stApp {{   
-        background-image: linear-gradient(rgba(0,0,0,0.6)), rgba(0,0,0,0,6)), url("https://raw.githubusercontent.com/ka-short/mldp_proj/refs/heads/main/car-wallpaper.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://raw.githubusercontent.com/ka-short/mldp_proj/refs/heads/main/car-wallpaper.jpg");
         background-size: cover;
     }}
 
