@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 # Load trained model and training columns
-model = joblib.load("best_dt_model.pkl")
+model = joblib.load("best_rf_model.pkl")
 model_columns = joblib.load("model_columns.pkl")
 
 # Streamlit UI setup
