@@ -4,14 +4,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-# Load trained model and training columns\
+# Load trained model and training columns
 model = joblib.load("best_rf_model.pkl")
 model_columns = joblib.load("model_columns.pkl")
-
-# Check if the model was loaded correctly
-if isinstance(model, list):
-    st.error("🚨 The loaded model is a list. You likely did best_rf_model = joblib.dump(...) by mistake when saving.")
-    st.stop()
 
 # Streamlit UI setup
 st.title("🚗 Engine Horsepower Predictor")
@@ -32,7 +27,6 @@ max_speed = st.number_input("Max Speed (km/h)", min_value=100, max_value=400, va
 transmission = st.selectbox("Select Transmission", Transmission)
 drive_wheels = st.selectbox("Select Drive Wheels", Drive_Wheels)
 
-# Create input DataFrame
 df_input = pd.DataFrame({
     'curb_weight_kg': [curb_weight_kg],
     'capacity_cm3': [capacity_cm3],
@@ -45,7 +39,7 @@ df_input = pd.DataFrame({
     'drive_wheels_All': [1 if drive_wheels == 'All' else 0],
 })
 
-# Reindex to match model's expected input
+# reindex
 input_df = df_input.reindex(columns=model_columns, fill_value=0)
 
 # Predict
@@ -53,7 +47,6 @@ if st.button("Predict"):
     prediction = model.predict(input_df)[0]
     st.success(f"Will this vehicle have high horsepower? Prediction: {prediction:.2f} HP")
 
-# Background image and style
 st.markdown(f''' <style> 
     .stApp {{   
         background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://raw.githubusercontent.com/ka-short/mldp_proj/refs/heads/main/car-wallpaper.jpg");
