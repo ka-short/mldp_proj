@@ -1,4 +1,3 @@
-# image: https://www.freepik.com/
 import joblib
 import streamlit as st
 import numpy as np
@@ -43,7 +42,7 @@ input_df = df_input.reindex(columns=model_columns, fill_value=0)
 # Predict
 if st.button("Predict"):
     prediction = model.predict(input_df)[0]
-    st.success(f"Will this vehicle have high horsepower? Prediction: {prediction:.2f} HP")
+    st.success(f"Vehicle Horsepower Prediction: {prediction:.2f} HP")
 
 # Background image and style
 st.markdown(f''' <style> 
